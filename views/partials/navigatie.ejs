@@ -1,0 +1,54 @@
+<header>
+    <% if (companies.logo) { %>
+        <picture>
+            <source srcset="https://fdnd-agency.directus.app/assets/<%= companies.logo.id %>?avif" type="image/avif">
+            <source srcset="https://fdnd-agency.directus.app/assets/<%= companies.logo.id %>?webp" type="image/webp">
+            <img src="https://fdnd-agency.directus.app/assets/<%= companies.logo.id %>" alt="" height="<%= companies.logo.height %>" width="<%= companies.logo.width %>">
+        </picture>
+    <% } else { %>
+        <img src="/style/image/unknown.webp" alt="" height="100" width="100">
+    <% } %>
+    <div>
+        <p><%= companies.name %></p>
+        <small>Hoeveel jaar lid</small>
+    </div>
+</header>
+
+<div class="nav-main">
+    <ul>
+        <li>
+            <a href="/dashboard" <% if (current == '/dashboard') { %>class="active"<% } %>>Dashboard</a>
+        </li>
+        <li>
+            <a href="/financiers" <% if (current == '/financiers') { %>class="active"<% } %>>Financiers</a>
+            <ul>
+                <li><button type="button">+ voeg toe</button></li>
+            </ul>
+        </li>
+        <li>
+            <a href="/dashboard/<%= companies.id %>/klanten" <% if (current == '/klanten') { %>class="active"<% } %>>Klanten</a>
+        </li>
+        <li>
+            <a href="/leveranciers" <% if (current == '/leveranciers') { %>class="active"<% } %>>Leveranciers</a>
+            <ul>
+                <li><button type="button">+ voeg toe</button></li>
+            </ul>
+        </li>
+        <li>
+            <a href="/medewerkers"<% if (current == '/medewerkers') { %>class="active"<% } %>>Medewerkers</a>
+            <ul>
+                <li><button type="button">+ voeg toe</button></li>
+            </ul>
+        </li>
+        <li>
+            <a href="/omgeving" <% if (current == '/omgeving') { %>class="active"<% } %>>Omgeving</a>
+            <ul>
+                <li><button type="button">+ voeg toe</button></li>
+            </ul>
+        </li>    
+    </ul>
+
+    <ul>
+        <li><a href="/" <% if (current == '/') { %>class="active"<% } %>>Afmelden</a></li>
+    </ul>
+</div>

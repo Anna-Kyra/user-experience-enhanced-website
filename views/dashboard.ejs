@@ -1,0 +1,98 @@
+<%- include('partials/head') %>
+<nav>
+    <%- include('partials/navigatie', {current: '/dashboard'}); %>
+</nav>
+
+<main>
+    <header>
+        Dashboard
+    </header>
+    <section class="profile">
+        <% if (companies.logo) { %>
+            <picture>
+                <source srcset="https://fdnd-agency.directus.app/assets/<%= companies.logo.id %>?avif" type="image/avif">
+                <source srcset="https://fdnd-agency.directus.app/assets/<%= companies.logo.id %>?webp" type="image/webp">
+                <img src="https://fdnd-agency.directus.app/assets/<%= companies.logo.id %>" alt="" height="<%= companies.logo.height %>" width="<%= companies.logo.width %>">
+            </picture>    
+            <% } else { %>
+            <img src="/style/image/unknown.webp" alt="" height="150px" width="150px">
+        <% } %>
+        <div>
+            <h3><%= companies.name %></h3>
+            <p>Wat voor bedrijf</p>
+            <p>Hoeveel jaar lid</p>
+            <button type="button">verander profiel</button>
+        </div>
+    </section>
+    <section>
+        <h2>Begin met opzetten</h2>
+        <label> Beginner
+            <progress id="file" value="32" max="100"> 32% </progress>
+        </label>
+        <details>
+            <summary>Info over hoe de badge gehaald kan worden</summary>
+            <h3>Stappenplan</h3>
+            <ol>
+                <li><h3>Stakeholders</h3>
+                    <i>Info over hoe stakeholders werken</i>
+                </li>
+                <li>
+                    <h3>SDG's</h3>
+                <i>Info over hoe sdg's werken</i>
+                </li>
+                <li>
+                    <h3>Scores</h3>
+                    <i>Info over hoe scores op sdg's werken</i>
+                </li>
+            </ol>
+        </details>
+        <h3>Suggesties</h3>
+        <article>
+            <h4>Stakeholders</h4>
+            <i>Info over hoe je stakeholders</i>
+        </article>
+    </section>   
+    
+    <section>
+        <h2>Stakeholders</h2>
+        <section>
+            <article>
+                <h3>Financiers</h3>
+                <i>info over financiers</i>
+                <p>Voeg uw financier toe*</p>
+            </article>
+            <article>
+                <h3>Klanten</h3>
+                <i>info over klanten</i>
+                <p>Voeg nog 2 klanten toe*</p>
+            </article>
+            <article>
+                <h3>Leveranciers</h3>
+                <i>info over leveranciers</i>
+                <p>Voeg uw leverancier toe*</p>
+            </article>
+            <article>
+                <h3>Medewerkers</h3>
+                <i>info over medewerkers</i>
+                <p>Voeg uw medewerker toe</p>
+            </article>
+            <article>
+                <h3>Omgeving</h3>
+                <i>info over omgeving</i>
+                <p>Voeg uw omgeving toe*</p>
+            </article>
+        </section>
+    </section>
+
+    <footer>
+        <ul>
+            <li><a href="#">Onze Visie</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Privacy voorwaarde</a></li>   
+        </ul>
+        <p>&copy; 2023 CrossMarx</p>
+    </footer>
+</main>
+
+<%- include('partials/foot') %>

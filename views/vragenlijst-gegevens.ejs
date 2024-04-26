@@ -1,0 +1,28 @@
+<%- include('partials/head') %>
+<header>
+<h1>Klant toevoegen</h1>
+</header>
+<main>
+    <form>
+        <p>* geeft een verplicht veld aan</p>
+        <fieldset>
+            <label>
+                Klant naam:
+                <input name="klant" type="text" placeholder="bijv. ..." required>
+            </label>
+            <label>
+                Descriptie:
+                <input name="klant" type="text" placeholder="bijv. ..." required>
+            </label>
+            <label>
+                Klant profielfoto:
+                <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" />
+            </label>
+        </fieldset>
+            <button type="submit">volgende</button>
+    </form>
+</main>
+<footer>
+
+</footer>
+<%- include('partials/foot') %>

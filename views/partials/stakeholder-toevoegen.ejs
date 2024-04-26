@@ -1,0 +1,39 @@
+<header>
+    <h1><%= stakeholder%> toevoegen</h1>
+    <a href="/dashboard/<%= companies.id %>">x</a>
+</header>
+<form action="/dashboard/<%= companies.id %>"> 
+        <p>* geeft een verplicht veld aan</p>
+        <fieldset>
+            <label>
+            Klant naam:
+                <input name="klant" type="text" placeholder="bijv. ..." required>
+            </label>
+            <label>
+                Klant profielfoto:
+                <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" />
+            </label>
+        </fieldset>
+        
+        <fieldset>
+            <legend>SDG's toevoegen</legend>
+            <i>info over wat SDG's zijn</i>
+            <p>Kies minimaal 3 sdg's</p>
+            <div class="sdgs">
+                <%- include('partials/sdgs'); %>
+            </div>
+            <button type="button">overslaan</button>
+            <button type="submit">volgende</button>
+        </fieldset>
+
+        <fieldset>
+            <legend>Scores toevoegen</legend>
+            <p>Van de gekozen sdgs score van -5 tot 5</p>
+            <div class="sdgs">
+                <%- include('partials/selected_sdgs'); %>
+            </div>
+            <button type="button">overslaan</button>
+        </fieldset>
+
+            <button type="submit">opslaan</button>
+    </form>

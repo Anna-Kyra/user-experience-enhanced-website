@@ -1,35 +1,56 @@
-// Importeer het npm pakket express uit de node_modules map
 import express from 'express'
-// Importeer de zelfgemaakte functie fetchJson uit de ./helpers map
 import fetchJson from './helpers/fetch-json.js'
 
-const baseUrl = 'https://fdnd-agency.directus.app/'
-
-// Maak een nieuwe express app aan
 const app = express()
-
-// Stel ejs in als template engine
 app.set('view engine', 'ejs')
-
-// Stel de map met ejs templates in
 app.set('views', './views')
-
-// Gebruik de map 'public' voor statische resources, zoals stylesheets, afbeeldingen en client-side JavaScript
 app.use(express.static('public'))
-
-// Zorg dat werken met request data makkelijker wordt
 app.use(express.urlencoded({ extended: true }))
 
-// Zorg dat werken met JSON data makkelijker wordt
 app.use(express.json())
+
+// Basis endpoints
+const apiUrl = 'https://fdnd-agency.directus.app/items'
+const sdgData = await fetchJson(apiUrl + '/hf_sdgs/?fields=*,icon.id,icon.height,icon.width')
+
+const companiesData = await fetchJson(apiUrl + '/hf_companies/?fields=*,logo.id,logo.height,logo.width')
+const stakeholdersData = await fetchJson(apiUrl + '/hf_stakeholders/?fields=*.*') 
+
 
 // ROUTES
 app.get('/', function (request, response) {  
     response.render('index', {
+        sdgs: sdgData.data,
+        companies: companiesData.data
     })
 })
 
+app.get('/profile-edit/:id', function (request, response) {  
+    response.render('profile-edit', {
+        companies: companiesData.data
+    })
+})
 
+app.get('/dashboard/:id', function (request, response) {  
+    fetchJson(apiUrl + '/hf_companies/' + request.params.id + '/?fields=*,logo.id,logo.height,logo.width').then((companiesData) => {
+        fetchJson(apiUrl + `/hf_stakeholders/?filter={"company_id":"${request.params.id}"}`).then((stakeholdersData) => { 
+            response.render('dashboard', {
+                companies: companiesData.data
+            })
+        })
+    })
+})
+
+app.get('/klant-toevoegen/:id', function (request, response) {  
+    fetchJson(apiUrl + '/hf_companies/' + request.params.id + '/?fields=*,logo.id,logo.height,logo.width').then((companiesData) => {
+        fetchJson(apiUrl + `/hf_stakeholders/?filter={"company_id":"${request.params.id}"}`).then((stakeholdersData) => { 
+            response.render('vragenlijst-gegevens', {
+                sdgs: sdgData.data,
+                companies: companiesData.data
+            })
+        })
+    })
+})
 
 // Stel het poortnummer in waar express op moet gaan luisteren
 app.set('port', process.env.PORT || 8001)

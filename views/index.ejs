@@ -1,11 +1,45 @@
 <%- include('partials/head') %>
 <header>
-
+    <%- include('partials/sdgs') %>
 </header>
 <main>
+    <h1>
+        Welkom bij uw 
+        hand-footprint calculator!
+    </h1>
 
+    <form>
+        <label>
+            Bedrijf/e-mail
+            <select name="companies" required>
+                <option value="">Selecteer uw bedrijf</option>
+                <% companies.forEach(function(company) { %>
+                    <option value="<%= company.id %>"><%= company.name %></option>
+                <% }) %>
+            </select>
+        </label>
+        <label>
+            Wachtwoord
+            <input name="wachtwoord" type="text" placeholder="Wachtwoord" required>
+        </label>
+
+        <button type="submit">Aanmelden</button>
+
+        <div>
+            <hr><p>of</p><hr>
+        </div>  
+
+        <button type="button">Nog geen lid? Lid worden</button>
+        
+    </form>
+    
+    <section>
+        <% companies.forEach(function(company) { %>
+            <li><a href="./dashboard/<%= company.id %>"> <%= company.name %></a></li>
+        <% }) %>
+    </section>
 </main>
 <footer>
-    
+
 </footer>
 <%- include('partials/foot') %>

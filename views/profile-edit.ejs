@@ -1,0 +1,41 @@
+<%- include('partials/head') %>
+<header>
+<h1>Vertel wat over uw bedrijf</h1>
+</header>
+<main>
+<form>
+    <fieldset>
+        <legend>Bedrijf details</legend>
+        <label>
+            Soort
+            <select>
+                <option value="">Selecteer uw soort bedrijf</option>
+                <option value="bakkerij">Bakkerij</option>
+            </select>
+        </label>
+        <label>
+            Grote bedrijf
+            <input type="radio" name="grote" value="Klein">
+            <input type="radio" name="grote" value="Middel">
+            <input type="radio" name="grote" value="Groot">
+        </label>
+    </fieldset>
+    <fieldset>
+        <legend>Profiel details</legend>
+        <label>
+            logo
+            <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" />
+            <small>300px x 300px recommended. JPGs JPEGs and PNGs supported  </small>
+        </label>
+        <label>
+            Descriptie
+            <textarea  name="description" rows="4" cols="50" placeholder="Voorbeeld:..."></textarea>
+        </label>
+    </fieldset>
+    <button type="submit">Volgende</button>
+</form>
+</main>
+<footer>
+
+</footer>
+<%- include('partials/foot') %>
