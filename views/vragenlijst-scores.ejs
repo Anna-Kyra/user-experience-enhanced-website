@@ -1,4 +1,5 @@
 <%- include('partials/head') %>
+<%- include('partials/vragenlijst_header', {current: 'scores'}); %>
 <header>
     <ul class="breadcrumb">
         <li><a href="#">Dashboard</a></li>
@@ -7,7 +8,7 @@
 <h1>Klant toevoegen</h1>
 </header>
 <main>
-    <form>
+    <form action="/dashboard/<%= companies.id %>">
         <p>* geeft een verplicht veld aan</p>
         <fieldset>
             <legend>Scores toevoegen</legend>
@@ -15,9 +16,9 @@
             <div class="sdgs">
                 <%- include('partials/selected_sdgs'); %>
             </div>
-
-            <button type="button">overslaan</button>
-            <button type="submit">volgende</button>
+            <a href="/klant-toevoegen-sdgs/<%= companies.id %>">Terug</a>
+            <a href="/dashboard/<%= companies.id %>">Overslaan</a>
+            <button type="submit" >volgende</button>
         </fieldset>
     </form>
 </main>

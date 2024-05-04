@@ -31,23 +31,50 @@ app.get('/profile-edit/:id', function (request, response) {
     })
 })
 
-app.get('/dashboard/:id', function (request, response) {  
-    fetchJson(apiUrl + '/hf_companies/' + request.params.id + '/?fields=*,logo.id,logo.height,logo.width').then((companiesData) => {
-        fetchJson(apiUrl + `/hf_stakeholders/?filter={"company_id":"${request.params.id}"}`).then((stakeholdersData) => { 
-            response.render('dashboard', {
-                companies: companiesData.data
-            })
+app.get('/dashboard/:id', function (request, response) {
+    Promise.all([
+        fetchJson(apiUrl + '/hf_companies/' + request.params.id + '/?fields=*,logo.id,logo.height,logo.width'),
+        fetchJson(apiUrl + `/hf_stakeholders/?filter={"company_id":"${request.params.id}"}`)
+    ]).then(([companiesData, stakeholdersData]) => {
+        response.render('dashboard', {
+            sdgs: sdgData.data,
+            companies: companiesData.data
         })
     })
 })
 
-app.get('/klant-toevoegen/:id', function (request, response) {  
-    fetchJson(apiUrl + '/hf_companies/' + request.params.id + '/?fields=*,logo.id,logo.height,logo.width').then((companiesData) => {
-        fetchJson(apiUrl + `/hf_stakeholders/?filter={"company_id":"${request.params.id}"}`).then((stakeholdersData) => { 
-            response.render('vragenlijst-gegevens', {
-                sdgs: sdgData.data,
-                companies: companiesData.data
-            })
+app.get('/klant-toevoegen-gegevens/:id', function (request, response) {  
+    Promise.all([
+        fetchJson(apiUrl + '/hf_companies/' + request.params.id + '/?fields=*,logo.id,logo.height,logo.width'),
+        fetchJson(apiUrl + `/hf_stakeholders/?filter={"company_id":"${request.params.id}"}`)
+    ]).then(([companiesData, stakeholdersData]) => {
+        response.render('vragenlijst-gegevens', {
+            sdgs: sdgData.data,
+            companies: companiesData.data
+        })
+    })
+})
+
+app.get('/klant-toevoegen-sdgs/:id', function (request, response) {  
+    Promise.all([
+        fetchJson(apiUrl + '/hf_companies/' + request.params.id + '/?fields=*,logo.id,logo.height,logo.width'),
+        fetchJson(apiUrl + `/hf_stakeholders/?filter={"company_id":"${request.params.id}"}`)
+    ]).then(([companiesData, stakeholdersData]) => {
+        response.render('vragenlijst-sdgs', {
+            sdgs: sdgData.data,
+            companies: companiesData.data
+        })
+    })
+})
+
+app.get('/klant-toevoegen-scores/:id', function (request, response) {  
+    Promise.all([
+        fetchJson(apiUrl + '/hf_companies/' + request.params.id + '/?fields=*,logo.id,logo.height,logo.width'),
+        fetchJson(apiUrl + `/hf_stakeholders/?filter={"company_id":"${request.params.id}"}`)
+    ]).then(([companiesData, stakeholdersData]) => {
+        response.render('vragenlijst-scores', {
+            sdgs: sdgData.data,
+            companies: companiesData.data
         })
     })
 })

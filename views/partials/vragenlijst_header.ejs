@@ -1,0 +1,29 @@
+<header>
+    <ul>
+        <li><a href="/dashboard/<%= companies.id %>">Dashboard</a></li>
+        <li>Klant toevoegen</li>
+    </ul>
+    <div>
+        <h1>Klant toevoegen</h1>
+        <a href="/dashboard/<%= companies.id %>">Annuleren X</a>
+    </div>
+    <section>
+        <ol>
+            <li>Klant toevoegen</li>
+            <li>SDG's kiezen</li>
+            <li>Scores toevoegen</li>
+        </ol>
+        <label>
+            <% if (current == 'gegevens') { %>
+                <progress id="file" value="10" max="100" list="progress"> 10% </progress>
+            <% } %>
+            <% if (current == 'sdgs') { %>
+                <progress id="file" value="33" max="100" list="progress"> 33% </progress>
+            <% } %>
+            <% if (current == 'scores') { %>
+                <progress id="file" value="66" max="100" list="progress"> 66% </progress>
+            <% } %>
+            
+        </label>
+    </section>
+</header>
