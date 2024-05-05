@@ -1,29 +1,28 @@
-<%- include('partials/head') %>
+<%- include('partials/head', {current: 'vragenlijst'}); %>
 <%- include('partials/vragenlijst_header', {current: 'sdgs'}); %>
-<header>
-    <ul>
-        <li><a href="/dashboard/<%= companies.id %>">Dashboard</a></li>
-        <li>Klant toevoegen</li>
-    </ul>
-    <h1>Klant toevoegen</h1>
-    <a href="/dashboard/<%= companies.id %>">Annuleren X</a>
-</header>
 <main>
-    <form>
+    <form method="POST" action="/klant-toevoegen-scores/<%= companies.id %>">
         <fieldset>
             <legend>Aan welke SDG's leveren deze klanten een positieve of negatieve bijdrage?</legend>
             <i>Gebruiken jouw klanten jouw dienst of product om een positieve impact te maken.</i>
             <p>Kies minimaal 3 sdg's</p>
-            <div class="sdgs">
+            <section class="sdgs">
                 <%- include('partials/sdgs'); %>
-            </div>
+            </section>
         </fieldset>
-        <a href="/klant-toevoegen-gegevens/<%= companies.id %>">Terug</a>
-        <a href="/dashboard/<%= companies.id %>">Overslaan</a>
-        <button type="submit" class="sdgs-button" disabled>volgende</button>
+
+        <footer>
+            <!-- action="/klant-toevoegen-scores/<%= companies.id %>" -->
+            <a href="/klant-toevoegen-gegevens/<%= companies.id %>"> < Terug</a>
+            <div>
+                <a href="/dashboard/<%= companies.id %>" class="skip">Overslaan</a>
+                <button type="submit" class="sdgs-button" disabled>volgende > </button>
+            </div>
+        </footer>
+            
+            
+
     </form>
 </main>
-<footer>
-    <!-- action="/klant-toevoegen-scores/<%= companies.id %>" -->
-</footer>
+
 <%- include('partials/foot') %>

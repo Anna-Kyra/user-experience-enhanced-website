@@ -13,3 +13,15 @@ checkboxes.forEach(checkbox => {
         }
     })
 })
+
+
+let upload = document.querySelector('input[type="file"]')
+let profile = document.querySelector('.profile-picture')
+
+upload.addEventListener('change', function(event) {
+    const fileUrl = event.target.files[0]
+    const objectUrl = window.URL.createObjectURL(fileUrl)
+    // console.log(objectUrl)
+    profile.style.setProperty('--upload', `url('${objectUrl}')`)
+    // profile.style.setProperty('--upload', "blue")
+})

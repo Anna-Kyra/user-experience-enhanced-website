@@ -1,21 +1,30 @@
 <header>
-    <ul>
-        <li><a href="/dashboard/<%= companies.id %>">Dashboard</a></li>
-        <li>Klant toevoegen</li>
-    </ul>
-    <div>
-        <h1>Klant toevoegen</h1>
+    <section>
+        <ul>
+            <li><a href="/dashboard/<%= companies.id %>">Dashboard</a></li>
+            <li>Klant toevoegen</li>
+        </ul>
+
         <a href="/dashboard/<%= companies.id %>">Annuleren X</a>
-    </div>
+        <h1>Klant toevoegen</h1>
+        
+    </section>
+    
     <section>
         <ol>
-            <li>Klant toevoegen</li>
-            <li>SDG's kiezen</li>
-            <li>Scores toevoegen</li>
+            <li><p>1. Klant <span>toevoegen</span></p></li>
+            <li><p>2. SDG's <span>kiezen</span></p></li>
+            <li><p>3. Scores <span>toevoegen</span></p></li>
         </ol>
+
+        <div class="dots-progress">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
         <label>
             <% if (current == 'gegevens') { %>
-                <progress id="file" value="10" max="100" list="progress"> 10% </progress>
+                <progress id="file" value="5" max="100" list="progress"> 0% </progress>
             <% } %>
             <% if (current == 'sdgs') { %>
                 <progress id="file" value="33" max="100" list="progress"> 33% </progress>

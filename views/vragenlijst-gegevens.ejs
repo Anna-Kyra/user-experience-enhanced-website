@@ -1,10 +1,10 @@
-<%- include('partials/head') %>
+<%- include('partials/head', {current: 'vragenlijst'}); %>
 <%- include('partials/vragenlijst_header', {current: 'gegevens'}); %>
 <main>
     <form action="/klant-toevoegen-sdgs/<%= companies.id %>">
-        <fieldset>
+        <fieldset class="gegevens">
             <legend>Vertel wat over uw klant</legend>
-            <p>* geeft een verplicht veld aan</p>
+            <i>* geeft een verplicht veld aan</i>
             <label>
                 Klant naam:
                 <input name="klant" type="text" placeholder="bijv. ..." required>
@@ -13,13 +13,20 @@
                 Descriptie:
                 <input name="klant" type="text" placeholder="bijv. ...">
             </label>
-            <label>
+            <label class="profile" for="profile">
                 Klant profielfoto:
-                <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" />
+                <div class="profile-picture">
+                </div>
                 <small>300px x 300px recommended. JPGs JPEGs and PNGs supported</small>
             </label>
+                
+                    <input type="file" id="profile" name="avatar" accept="image/png, image/jpeg" />
+                
+                
+            
         </fieldset>
-        <button type="submit">volgende</button>
+        <footer><button type="submit">volgende ></button></footer>
+        
     </form>
 </main>
 <footer>

@@ -67,13 +67,26 @@ app.get('/klant-toevoegen-sdgs/:id', function (request, response) {
     })
 })
 
+app.post('/klant-toevoegen-scores/:id', (request, response) => { //post route naar / met response request
+    console.log(request.body); // log request body in console
+    const sdgId = request.body.sdg; // haal sdg uit request body
+    console.log(sdgId);
+    if (sdgId) {
+        response.redirect(`/klant-toevoegen-scores/${request.params.id}?sdgIds=${sdgId}`); // redirect naar scoreboard net de sdgId
+    } else {
+        response.redirect('/klant-toevoegen-sdgs/:id?error=true'); // brengt error
+    }
+})
+
 app.get('/klant-toevoegen-scores/:id', function (request, response) {  
+    const filteredSdgs = sdgData.data.filter(sdg => request.query.sdgIds.includes(sdg.number)) // filtert de sdgs die zijn aangekruist bij de checkboxes 
+    console.log(sdgData.data)
     Promise.all([
         fetchJson(apiUrl + '/hf_companies/' + request.params.id + '/?fields=*,logo.id,logo.height,logo.width'),
         fetchJson(apiUrl + `/hf_stakeholders/?filter={"company_id":"${request.params.id}"}`)
     ]).then(([companiesData, stakeholdersData]) => {
         response.render('vragenlijst-scores', {
-            sdgs: sdgData.data,
+            sdgs: filteredSdgs,
             companies: companiesData.data
         })
     })
