@@ -11,9 +11,12 @@
             
         </fieldset>
         <footer>
-            <a href="/klant-toevoegen-sdgs/<%= companies.id %>">Terug</a>
-            <a href="/dashboard/<%= companies.id %>">Overslaan</a>
-            <button type="submit" >volgende</button>
+            <!-- action="/klant-toevoegen-scores/<%= companies.id %>" -->
+            <a href="/klant-toevoegen-sdgs/<%= companies.id %>"> < Terug</a>
+            <div>
+                <a href="/dashboard/<%= companies.id %>" class="skip">Overslaan</a>
+                <button type="submit" class="sdgs-button" disabled>volgende > </button>
+            </div>
         </footer>
     </form>
 </main>

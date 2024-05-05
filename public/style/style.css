@@ -193,11 +193,29 @@ input[type="text"] {
             grid-template-columns: 1fr 1fr 1.1fr;
             /* gap: -2em; */
             padding: 1em 0;
+
+            & a {
+                all: unset;
+                cursor: pointer;
+            }
+            
             
 
             & li {
                 all: unset;
                 width: 80%;
+                opacity: 50%;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    height: 1em;
+                    border: 1px dashed var(--text-clr);
+                    bottom: 2em;
+                    margin-left: 7px;
+
+                    z-index: -1;
+                }
 
                 & p {
                     background-color: var(--primary-clr);
@@ -242,16 +260,7 @@ input[type="text"] {
                 background-color: var(--text-clr);
                 border: 5px solid var(--primary-clr);
 
-                &::before {
-                    content: '';
-                    position: absolute;
-                    height: 50px;
-                    border: 1px dashed var(--text-clr);
-                    bottom: calc(15px/2);
-                    margin: 0 2.5px;
-
-                    z-index: -1;
-                }
+                
             }
             
         }
@@ -358,7 +367,7 @@ input[type="text"] {
 
         .gegevens {
             position: relative;
-            width: 50%;
+            width: 100%;
             margin: auto;
             text-align: left;
 
@@ -466,9 +475,11 @@ input[type="text"] {
             }
 
             & ol {
+                
     
                 & li {
                     display: flex;
+                    
 
                     & span {
                         display: unset;
@@ -483,6 +494,12 @@ input[type="text"] {
             text-align: center;
             & legend {
                 font-size: 1.5em;
+                
+            }
+
+            & .gegevens {
+                width: 50%;
+                min-width: 30em;
             }
         }
     }

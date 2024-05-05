@@ -12,9 +12,32 @@
     
     <section>
         <ol>
-            <li><p>1. Klant <span>toevoegen</span></p></li>
-            <li><p>2. SDG's <span>kiezen</span></p></li>
-            <li><p>3. Scores <span>toevoegen</span></p></li>
+            
+            <li <% if (current == 'gegevens') { %> style="opacity: 100%;"<% } %>>
+                <% if (current == 'sdgs') { %> <a href="/klant-toevoegen-gegevens/<%= companies.id %>">
+                    <p>1. Klant <span>toevoegen</span></p></a>
+                <% } %>
+                <% if (current == 'scores') { %> <a href="/klant-toevoegen-gegevens/<%= companies.id %>">
+                    <p>1. Klant <span>toevoegen</span></p></a>
+                <% } %>
+                <% if (current == 'gegevens') { %>
+                    <p>1. Klant <span>toevoegen</span></p>
+                <% } %>
+
+                
+                
+            </li>
+            
+            <li <% if (current == 'sdgs') { %> style="opacity: 100%;"<% } %>>
+                <% if (current == 'scores') { %> 
+                    <a href="/klant-toevoegen-sdgs/<%= companies.id %>">
+                        <p>2. SDG's <span>kiezen</span></p>
+                    </a>
+                <% }else{ %>
+                    <p>2. SDG's <span>kiezen</span></p>
+                <% } %>
+                </li>
+            <li <% if (current == 'scores') { %> style="opacity: 100%;"<% } %>><p>3. Scores <span>toevoegen</span></p></li>
         </ol>
 
         <div class="dots-progress">
