@@ -2,10 +2,12 @@
 <%- include('partials/vragenlijst_header', {current: 'sdgs'}); %>
 <main>
     <form method="POST" action="/klant-toevoegen-scores/<%= companies.id %>">
+        <input type="hidden" name="stakeholder_id" value="39">
+        
         <fieldset>
             <legend>Aan welke SDG's leveren deze klanten een positieve of negatieve bijdrage?</legend>
             <i>Gebruiken jouw klanten jouw dienst of product om een positieve impact te maken.</i>
-            <p>Kies minimaal 3 sdg's</p>
+            <p class="selecteer_3">Kies minimaal 3 sdg's</p>
             <section class="sdgs">
                 <%- include('partials/sdgs'); %>
             </section>
@@ -16,7 +18,7 @@
             <a href="/klant-toevoegen-gegevens/<%= companies.id %>"> < Terug</a>
             <div>
                 <a href="/dashboard/<%= companies.id %>" class="skip">Overslaan</a>
-                <button type="submit" class="sdgs-button" disabled>volgende > </button>
+                <button type="submit" class="sdgs-button">volgende > </button>
             </div>
         </footer>
             

@@ -63,6 +63,13 @@ a {
         filter: brightness(1.25);
         text-decoration: underline;
     }
+
+    &:focus-visible{
+        outline: 2px solid var(--primary-clr);
+        box-shadow: 0 0 5em var(--primary-clr);
+        text-shadow: 0 0 5em var(--primary-clr);
+        filter: brightness(1.5);
+    }
 }
 
 button {
@@ -82,6 +89,10 @@ button {
 
     &:disabled {
         opacity: 50%;
+        cursor:not-allowed;
+        &:hover {
+            filter: none;
+        }
     }
 }
 
@@ -109,7 +120,7 @@ picture {
 
 img { max-width: 100%; height: auto; }
 
-progress { width: 100%; }
+progress { width: 100%; transition: all 300ms ease-out;}
 
 input[type="text"] {
     all: unset;
@@ -129,6 +140,32 @@ input[type="text"] {
         color: var(--text-clr);
         opacity: 100%;
         
+    }
+
+    &:focus-visible{
+        outline: 2px solid var(--primary-clr);
+        box-shadow: 0 0 5em var(--primary-clr);
+        text-shadow: 0 0 5em var(--primary-clr);
+        filter: brightness(1.25);
+    }
+}
+
+.fat_wiggle {
+    font-weight: bold;
+    @media (prefers-reduced-motion:no-preference) {
+        animation: wiggle 1s ease-in-out infinite;
+    }
+}
+
+@keyframes wiggle {
+    0% {
+        rotate: 1deg;
+    }
+    50% {
+        rotate: -1deg;
+    }
+    100% {
+        rotate: 1deg;
     }
 }
 
@@ -197,9 +234,14 @@ input[type="text"] {
             & a {
                 all: unset;
                 cursor: pointer;
+
+                &:focus-visible{
+                    outline: 2px solid var(--primary-clr);
+                    box-shadow: 0 0 5em var(--primary-clr);
+                    text-shadow: 0 0 5em var(--primary-clr);
+                    filter: brightness(1.5);
+                }
             }
-            
-            
 
             & li {
                 all: unset;
@@ -290,7 +332,6 @@ input[type="text"] {
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: center;
-                overflow-y: auto;
 
                 & label {
                     cursor: pointer;
@@ -320,10 +361,12 @@ input[type="text"] {
                     height: 100%;
                     background-color: var(--background-clr);
                     transition: all 100ms ease-in-out;
+                    /* position: relative; */
                 }
 
                 & input {
-                    visibility: hidden;
+                    /* visibility: hidden; */
+                    opacity: 0;
                     position: absolute;
 
                     &:focus-visible + label{
@@ -347,22 +390,121 @@ input[type="text"] {
                 }
             }
         }
-        
 
-        & legend {
+        & .selected {
             
+
+            & picture {
+                display: flex;
+                border: 3px solid var(--text-clr);
+                border-radius: 5px;
+            }
+
+            & article {
+                display: flex;
+                width: 100%;
+                /* background-color: #B3DF02; */
+                justify-content: center;
+                align-items: center;
+                gap: 2em;
+
+                & p {
+                    width: 100%;
+                }
+            }
+            
+
+            option {
+                padding: 0;
+              }
+              
+              input[type="range"] {
+                width: 100%;
+                margin: 0;
+              }
+
+
+            & datalist {
+                cursor: default;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                writing-mode: vertical-lr;
+                width: 100%;
+                & option {
+                    rotate: -90deg;
+                    /* color: red; */
+                    font-weight: bold;
+                    &[label="0"] {
+                        font-weight: normal;
+                    }
+                }
+              }
+
+
+              input[type="range"]::-webkit-slider-runnable-track {
+                border-radius:10px;
+                background: var(--background-clr); 
+                border: inset 3px solid var(--text-clr);
+                background: -webkit-linear-gradient(
+                  to right,
+                  #FB4C4C,
+                  var(--primary-clr)
+                ); 
+                background: linear-gradient(
+                  to right,
+                  #FB4C4C,
+                  var(--primary-clr)
+            );}
+/* 
+            @media screen and (-webkit-min-device-pixel-ratio:0) {
+                input[type='range'] {
+                  overflow: hidden;
+                  width: 100%;
+                  -webkit-appearance: none;
+                  background-color: #9a905d;
+                }
+                
+                input[type='range']::-webkit-slider-runnable-track {
+                  height: 2em;
+                  -webkit-appearance: none;
+                  color: red;
+                  margin-top: -1px;
+                }
+                
+                input[type='range']::-webkit-slider-thumb {
+                  width: 10px;
+                  -webkit-appearance: none;
+                  height: 10px;
+                  cursor: ew-resize;
+                  background: #434343;
+                  box-shadow: -10px 0 0 10px #43e5f7;
+                } */
+            }
+
+            /* input[type="range"]::-webkit-slider-runnable-track {
+                background: #053a5f;
+                height: 0.5rem;
+              }
+              */
+            
+        }
+        
+        & legend {
             font-weight: bold;
             font-size: 1.1rem;
             max-width: 30em;
-            
         }
 
         & footer {
+            /* position: fixed;
+            width: 100%;
+            max-width: 1000px;
+            background-color: red; */
+            bottom: 0;
             display: flex;
             justify-content: space-between;
             gap: 1em;
-
-            
         }
 
         .gegevens {
@@ -445,7 +587,7 @@ input[type="text"] {
     }
 
 
-}
+
 
 @media screen and (min-width:25rem) {
     .vragenlijst {

@@ -1,25 +1,32 @@
 <% sdgs.forEach(function(sdg) { %>	
-	<picture>
-		<source srcset="https://fdnd-agency.directus.app/assets/<%= sdg.icon.id %>?format=avif" type="image/avif">
-		<source srcset="https://fdnd-agency.directus.app/assets/<%= sdg.icon.id %>?format=webp" type="image/webp">
-		<img src="https://fdnd-agency.directus.app/assets/<%= sdg.icon.id %>" alt="<%= sdg.title %>" height="100" width="100">	
-	</picture>
-	<p>
-		<label>
-			<input type="range" min="-5" max="5" list="values">
-		</label>
-	</p>
+	<input type="hidden" name="stakeholder_id" value="39">
+	<input type="hidden" name="sdg_id" value="<%= sdg.number%>">
+	<article>
+		
+		<picture>
+			<source srcset="https://fdnd-agency.directus.app/assets/<%= sdg.icon.id %>?format=avif" type="image/avif">
+			<source srcset="https://fdnd-agency.directus.app/assets/<%= sdg.icon.id %>?format=webp" type="image/webp">
+			<img src="https://fdnd-agency.directus.app/assets/<%= sdg.icon.id %>" alt="<%= sdg.title %>" height="100" width="100">	
+		</picture>
+		<p>
+			<label>
+				<input type="range" min="-5" max="5" value="" name="selectSdg" list="values">
+			</label>
+			<datalist id="values">
+				<option value="-5" label="-5"></option>
+				<option value="-4" label=""></option>
+				<option value="-3" label=""></option>
+				<option value="-2" label=""></option>
+				<option value="-1" label=""></option>
+				<option value="-0" label="0"></option>
+				<option value="1" label=""></option>
+				<option value="2" label=""></option>
+				<option value="3" label=""></option>
+				<option value="4" label=""></option>
+				<option value="5" label="5"></option>
+			</datalist>
+		</p>
 
-	<datalist id="values">
-		<option value="-5" label="-5"></option>
-		<option value="-4" label="-4"></option>
-		<option value="-3" label="-3"></option>
-		<option value="-2" label="-2"></option>
-		<option value="-1" label="-1"></option>
-		<option value="1" label="1"></option>
-		<option value="2" label="2"></option>
-		<option value="3" label="3"></option>
-		<option value="4" label="4"></option>
-		<option value="5" label="5"></option>
-	</datalist>
+		
+	</article>
 <% }) %>

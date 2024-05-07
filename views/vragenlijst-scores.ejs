@@ -1,21 +1,22 @@
 <%- include('partials/head', {current: 'vragenlijst'}); %>
 <%- include('partials/vragenlijst_header', {current: 'scores'}); %>
 <main>
-    <form action="/dashboard/<%= companies.id %>">
+    <form method="POST" action="/klant-toevoegen-scores/<%= companies.id %>">
+       
         <fieldset>
             <legend>Scores toevoegen</legend>
             <i>Van de gekozen sdgs score van -5 tot 5</i>
-            <div class="sdgs">
+            <div class="sdgs selected">
                 <%- include('partials/selected_sdgs'); %>
             </div>
-            
         </fieldset>
+
         <footer>
             <!-- action="/klant-toevoegen-scores/<%= companies.id %>" -->
             <a href="/klant-toevoegen-sdgs/<%= companies.id %>"> < Terug</a>
             <div>
                 <a href="/dashboard/<%= companies.id %>" class="skip">Overslaan</a>
-                <button type="submit" class="sdgs-button" disabled>volgende > </button>
+                <button type="submit" class="sdgs-button">Afronden > </button>
             </div>
         </footer>
     </form>
