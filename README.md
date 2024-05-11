@@ -2,6 +2,9 @@
 
 # Titel
 <!-- Geef je project een titel en schrijf in één zin wat het is -->
+<img width="1792" alt="Scherm­afbeelding 2024-05-07 om 21 07 36" src="https://github.com/Anna-Kyra/user-experience-enhanced-website/assets/144000242/ad0bd21b-ab39-4d16-8c81-6814c53739bf">
+<img width="1792" alt="Scherm­afbeelding 2024-05-07 om 21 07 54" src="https://github.com/Anna-Kyra/user-experience-enhanced-website/assets/144000242/bb84f58b-351c-43ce-8334-7c173bf31355">
+<img width="1792" alt="Scherm­afbeelding 2024-05-07 om 21 08 17" src="https://github.com/Anna-Kyra/user-experience-enhanced-website/assets/144000242/b136326d-3e25-4ede-a2dd-fa615552d45f">
 
 ## Inhoudsopgave
 
