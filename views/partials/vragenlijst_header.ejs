@@ -11,7 +11,7 @@
     </section>
     
     <section>
-        <ol>
+        <!-- <ol>
             
             <li <% if (current == 'gegevens') { %> style="opacity: 100%;"<% } %>>
                 <% if (current == 'sdgs') { %> <a href="/klant-toevoegen-gegevens/<%= companies.id %>">
@@ -38,9 +38,8 @@
                 <% } %>
                 </li>
             <li <% if (current == 'scores') { %> style="opacity: 100%;"<% } %>><p>3. Scores <span>toevoegen</span></p></li>
-        </ol>
-
-        <div class="dots-progress">
+        </ol> -->
+        <!-- <div class="dots-progress">
             <div></div>
             <div></div>
             <div></div>
@@ -56,6 +55,20 @@
                 <progress id="file" value="66" max="100" list="progress"> 66% </progress>
             <% } %>
             
-        </label>
+        </label> -->
+        <ol class="steps">
+            <li <% if (current == 'gegevens') { %> class="active" <% } %><% if (current == 'sdgs') { %> class="done<% if (current == 'scores') { %> class="done" <% } %>" <% } %>>
+                <div>1 </div>
+                <p>Klant toevoegen</p>
+            </li>
+            <li <% if (current == 'sdgs') { %> class="active" <% } %><% if (current == 'scores') { %> class="done" <% } %>>
+                <div>2 </div>
+                <p>SDG's kiezen</p>
+            </li>
+            <li <% if (current == 'scores') { %> class="active" <% } %>>
+                <div>3 </div>
+                <p>Scores toevoegen</p>
+            </li>
+        </ol>
     </section>
 </header>

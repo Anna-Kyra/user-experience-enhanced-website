@@ -77,9 +77,6 @@ app.post('/klant-toevoegen-scores/:id', (request, response) => { //post route na
 
 
     
-
-
-    
     if (sdgId) {
         request.body.sdg.forEach(async function(sdg) {
             await fetch('https://fdnd-agency.directus.app/items/hf_scores', {

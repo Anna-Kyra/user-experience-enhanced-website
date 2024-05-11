@@ -9,9 +9,10 @@
     box-sizing: border-box;
 
     &:focus-visible{
-        outline: 2px solid var(--primary-clr);
-        box-shadow: 0 0 5em var(--primary-clr);
-        text-shadow: 0 0 5em var(--primary-clr);
+        outline: 2px solid var(--link-clr);
+        border-radius: var(--border-radius);
+        box-shadow: 0 0 5em var(--link-clr);
+        text-shadow: 0 0 5em var(--link-clr);
     }
 }
 
@@ -19,10 +20,11 @@
     --background-clr: #F4FFEF;
     --text-clr: #004b2c;
     --primary-clr: #B3DF02;
+    --link-clr: #4763c8;
 
     --shadow-clr: var(--primary-clr);
 
-    --border: 2px solid var(--text-clr);
+    --border: 2px solid #afafaf;
     --border-radius: 5px;
 }
 
@@ -30,7 +32,7 @@
     
 
 body {
-    background-color: var(--background-clr);
+    background-color: #e2eae1;
     color: var(--text-clr);
     accent-color: var(--text-clr);
     font-family: "azo-sans-web", sans-serif;
@@ -53,7 +55,7 @@ i {
 
 a {
     cursor: pointer;
-    color: var(--text-clr); 
+    color: var(--link-clr); 
     text-decoration: none;
     font-weight: bold;
     /* filter: brightness(1.50); */
@@ -65,10 +67,9 @@ a {
     }
 
     &:focus-visible{
-        outline: 2px solid var(--primary-clr);
-        box-shadow: 0 0 5em var(--primary-clr);
-        text-shadow: 0 0 5em var(--primary-clr);
-        filter: brightness(1.5);
+        outline: 2px solid var(--link-clr);
+        box-shadow: 0 0 5em var(--link-clr);
+        text-shadow: 0 0 5em var(--link-clr);
     }
 }
 
@@ -96,6 +97,10 @@ button {
     }
 }
 
+label {
+    text-align: left;
+}
+
 .skip {
     all: unset;
     cursor: pointer;
@@ -120,13 +125,11 @@ picture {
 
 img { max-width: 100%; height: auto; }
 
-progress { width: 100%; transition: all 300ms ease-out;}
+progress { width: 100%; transition: all 300ms ease-out; }
 
-input[type="text"] {
-    all: unset;
-    opacity: 80%;
-    background-color: var(--primary-clr);
-    background: var(--primary-clr) linear-gradient(var(--primary-clr), rgba(0, 75, 44, 0.3) 98%);
+input[type="text"], textarea {
+    width: 100%;
+    background-color: #fff;
     padding: .25em .5em;
     border-radius: var(--border-radius);
     border: var(--border);
@@ -139,16 +142,19 @@ input[type="text"] {
     &:focus{
         color: var(--text-clr);
         opacity: 100%;
+        border-color: transparent;
         
     }
 
     &:focus-visible{
-        outline: 2px solid var(--primary-clr);
-        box-shadow: 0 0 5em var(--primary-clr);
-        text-shadow: 0 0 5em var(--primary-clr);
+        outline: 2px solid var(--link-clr);
+        box-shadow: 0 0 5em var(--link-clr);
+        text-shadow: 0 0 5em var(--link-clr);
         filter: brightness(1.25);
     }
 }
+
+
 
 .fat_wiggle {
     font-weight: bold;
@@ -173,19 +179,13 @@ input[type="text"] {
 
 
 .vragenlijst {
-    background: linear-gradient(var(--primary-clr) 5%, var(--background-clr) 30%);
-    background-repeat: no-repeat;
     height: 100vh;
     padding: 2rem 2rem;
     max-width: 1000px;
     margin: auto;
 
     & header {
-        --shadow-clr: #00fbff;
-        
         width: 100%;
-        
-        
         position: relative;
 
         & section:first-child {
@@ -199,7 +199,7 @@ input[type="text"] {
             display: flex;
 
             & li {
-                all: unset;
+                list-style: none;
                 &::after {
                     content: '>';
                     padding: .5rem;
@@ -225,22 +225,15 @@ input[type="text"] {
             padding: 1em 0;
         }
 
-        & ol {
+        /* & ol {
             display: grid;
             grid-template-columns: 1fr 1fr 1.1fr;
-            /* gap: -2em; */
             padding: 1em 0;
 
             & a {
-                all: unset;
+
                 cursor: pointer;
 
-                &:focus-visible{
-                    outline: 2px solid var(--primary-clr);
-                    box-shadow: 0 0 5em var(--primary-clr);
-                    text-shadow: 0 0 5em var(--primary-clr);
-                    filter: brightness(1.5);
-                }
             }
 
             & li {
@@ -260,8 +253,8 @@ input[type="text"] {
                 }
 
                 & p {
-                    background-color: var(--primary-clr);
-                    /* width: fit-content; */
+                    background-color: var(--text-clr);
+                    color: var(--primary-clr);
                     padding: .25em .5em;
                     border-radius: 5px;
                     border: 2px solid var(--text-clr);
@@ -278,11 +271,11 @@ input[type="text"] {
             height: 1em;
             appearance: none;
             -webkit-appearance: none;
-            background-color: var(--background-clr);
+            background-color: #fff;
 
             &::-webkit-progress-bar {
-                background-color: var(--background-clr);
-                border: 2px solid var(--text-clr);
+                background-color: #fff;
+                border: 2px solid #afafaf;
                 border-radius: 100px;
         }
             
@@ -305,20 +298,51 @@ input[type="text"] {
                 
             }
             
-        }
+        } */
+        
+        & ol {
+            /* display: inline-block; */
+            display: flex;
+            justify-content: space-between;
 
-        & progress {
-            &::after {
-                content: '';
+            & li {
+                display: flex;
+                gap: .5em;
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+            }
+
+            & div {
+                width: 40px;
+                height: 40px;
+                background-color: #fff;
+                display: inline-block;
+                border: 4px solid;
+                border-color: transparent;
+                border-radius: 50%;
                 
+                color: #afafaf;
+                font-weight: 600;
+                text-align: center;
+                line-height: 35px;
+            }
+
+            & p {
+                font-weight: lighter;
             }
         }
-        
 
     }
 
     & main {
         text-align: left;
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 2em;
+        max-width: 700px;
+        margin: 2em auto;
+        
 
         & fieldset {
             all: unset;
@@ -371,8 +395,9 @@ input[type="text"] {
 
                     &:focus-visible + label{
                         
-                        box-shadow: 0 0 5em var(--primary-clr);
-                        border: 3px solid var(--primary-clr);
+                        outline: 2px solid var(--link-clr);
+                        box-shadow: 0 0 5em var(--link-clr);
+                        text-shadow: 0 0 5em var(--link-clr);
                         
                     }
                     
@@ -516,19 +541,25 @@ input[type="text"] {
             & legend, i {
                 text-align: center;
             }
+            
 
             
             & input {
                 
                 width: 100%;
+                &[type="file"] {
+                    display: none;
+                    
+                }
 
             }
 
             & .profile {
-                --upload: linear-gradient(var(--primary-clr), rgba(0, 75, 44, 0.5) );
+                --upload: var(--primary-clr);
                 cursor: pointer;
                 text-align: left;
 				display: flex;
+                
                 gap: .5em;
                 flex-direction: column;
                 
@@ -536,7 +567,12 @@ input[type="text"] {
 				height: 300px;
 				/* background-color: aqua; */
 				justify-content: center;
-				text-align: center;
+				text-align: left;
+                &:focus-visible {
+                    outline: 2px solid var(--link-clr);
+                    box-shadow: 0 0 5em var(--link-clr);
+                    text-shadow: 0 0 5em var(--link-clr);
+                }
                 
 
                 &::after {
@@ -544,6 +580,7 @@ input[type="text"] {
                     position: absolute;
                     left: 0;
                     right: 0;
+                    text-align: center;
                 }
 
                 
@@ -640,7 +677,6 @@ input[type="text"] {
             }
 
             & .gegevens {
-                width: 50%;
                 min-width: 30em;
             }
         }
