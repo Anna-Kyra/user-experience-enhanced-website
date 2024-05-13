@@ -17,14 +17,14 @@
 }
 
 :root {
-    --background-clr: #F4FFEF;
+    --background-clr: #cfcfcf;
     --text-clr: #004b2c;
     --primary-clr: #B3DF02;
     --link-clr: #4763c8;
 
     --shadow-clr: var(--primary-clr);
 
-    --border: 2px solid #afafaf;
+    --border: 1.5px solid #afafaf;
     --border-radius: 5px;
 }
 
@@ -32,7 +32,7 @@
     
 
 body {
-    background-color: #e2eae1;
+    background-color: var(--background-clr);
     color: var(--text-clr);
     accent-color: var(--text-clr);
     font-family: "azo-sans-web", sans-serif;
@@ -56,8 +56,8 @@ i {
 a {
     cursor: pointer;
     color: var(--link-clr); 
-    text-decoration: none;
-    font-weight: bold;
+    /* text-decoration: none; */
+    /* font-weight: bold; */
     /* filter: brightness(1.50); */
     text-shadow: 0 0 5em var(--background-clr);
 
@@ -71,6 +71,10 @@ a {
         box-shadow: 0 0 5em var(--link-clr);
         text-shadow: 0 0 5em var(--link-clr);
     }
+}
+
+hr {
+    border-top-color: var(--primary-clr);
 }
 
 button {
@@ -128,7 +132,7 @@ img { max-width: 100%; height: auto; }
 progress { width: 100%; transition: all 300ms ease-out; }
 
 input[type="text"], textarea {
-    width: 100%;
+    width: 50%;
     background-color: #fff;
     padding: .25em .5em;
     border-radius: var(--border-radius);
@@ -179,10 +183,11 @@ input[type="text"], textarea {
 
 
 .vragenlijst {
-    height: 100vh;
     padding: 2rem 2rem;
-    max-width: 1000px;
+    max-width: 1200px;
     margin: auto;
+
+    /* ------------------------------------------------- HEADER ------------------------------------------------------------- */
 
     & header {
         width: 100%;
@@ -200,11 +205,16 @@ input[type="text"], textarea {
 
             & li {
                 list-style: none;
+
                 &::after {
                     content: '>';
                     padding: .5rem;
                 }
+
                 &:last-child::after {
+                    content: '';
+                }
+                &:first-child::after {
                     content: '';
                 }
             }
@@ -301,31 +311,93 @@ input[type="text"], textarea {
         } */
         
         & ol {
-            /* display: inline-block; */
+            position: sticky;
+            top: 0;
+            background: #fff;
+            border-radius: 10px;
+            padding: 1em 2em ;
             display: flex;
             justify-content: space-between;
 
+            
+
             & li {
                 display: flex;
-                gap: .5em;
-                flex-direction: column;
+                margin-right: 1em;
+                /* flex-direction: column; */
                 text-align: center;
                 align-items: center;
+                position: relative;
+                width: 100%;
+
+                &::after {
+                    content: '';
+                    background-color: #595959;
+                    width: 100%;
+                    height: 4px;
+                    margin-left: 1em;
+                }
+
+                &:last-child, &:last-child::after {
+                    all: unset;
+                    /* margin: 1em; */
+                }
+
+                & div {
+                    display: flex;
+                    flex-direction: column;
+                    text-align: center;
+                    align-items: center;
+                    width: max-content;
+
+                    & p {
+                        width: max-content;
+                    }
+
+                    
+                }
+
+                
+
+                & div div {
+                    width: 40px;
+                    height: 40px;
+                    background-color: var(--background-clr);
+                    border: 4px solid;
+                    border-color: transparent;
+                    border-radius: 50%;
+                    color: #595959;
+                    font-weight: 600;
+                    text-align: center;
+                    line-height: 35px;
+    
+                    
+                }
+
+                
+
+                & hr {
+                    border-color: #4763c8;
+                    width: 100%;
+                }
+
             }
 
-            & div {
-                width: 40px;
-                height: 40px;
-                background-color: #fff;
-                display: inline-block;
-                border: 4px solid;
-                border-color: transparent;
-                border-radius: 50%;
-                
-                color: #afafaf;
-                font-weight: 600;
-                text-align: center;
-                line-height: 35px;
+            & .active div div {
+                border: 4px solid var(--link-clr);
+                color: var(--link-clr);
+            }
+
+            & .done  {
+
+                &::after {
+                    background-color: rgb(88, 187, 88);
+                }
+
+                & div div {
+                    background-color: rgb(88, 187, 88);
+                    color: #fff;
+                }
             }
 
             & p {
@@ -335,30 +407,44 @@ input[type="text"], textarea {
 
     }
 
+    /* ------------------------------------------------- MAIN ------------------------------------------------------------- */
+
     & main {
         text-align: left;
-        background-color: #fff;
-        border-radius: 10px;
-        padding: 2em;
-        max-width: 700px;
-        margin: 2em auto;
+        
+        
+        
+        margin: 1em auto;
         
 
         & fieldset {
-            all: unset;
+            /* all: unset; */
             display: flex;
-            margin: 2em 0;
+            margin: 2em;
+            padding: 1em 2em 2em;
             flex-direction: column;
             gap: 2em;
+            /* width: 100%; */
+            /* max-width: 700px; */
+            background-color: #fff;
+            border-radius: 10px;
+
+            
+
+            & label {
+                display: grid;
+            }
 
             & section {
                 justify-self: center;
                 display: flex;
+                
                 flex-wrap: wrap;
                 justify-content: center;
 
                 & label {
                     cursor: pointer;
+                    width: fit-content;
                     /* background-color: red; */
                     height: fit-content;
                     transition: all 100ms cubic-bezier(0.74, 0.67, 0.59, 1.8);
@@ -374,7 +460,7 @@ input[type="text"], textarea {
                     }
 
                     &:active {
-                        box-shadow: 0 0 2em var(--primary-clr);
+                        box-shadow: 0 0 2em var(--link-clr);
                         transform: scale(70%);
                     }
                 }
@@ -399,9 +485,7 @@ input[type="text"], textarea {
                         box-shadow: 0 0 5em var(--link-clr);
                         text-shadow: 0 0 5em var(--link-clr);
                         
-                    }
-                    
-                    
+                    }                    
 
                     &:checked + label {
                         border: 3px solid var(--text-clr);
@@ -410,7 +494,7 @@ input[type="text"], textarea {
 
                     &:checked + label picture {
                         transform: scale(90%);
-                        box-shadow: 0 0 10em var(--primary-clr);
+                        box-shadow: 0 0 10em var(--link-clr);
                     }
                 }
             }
@@ -519,17 +603,22 @@ input[type="text"], textarea {
             font-weight: bold;
             font-size: 1.1rem;
             max-width: 30em;
+            background-color: var(--text-clr);
+            color: #fff;
+            padding: .5em 1em;
+            border-radius: 5px;
+            text-align: left;
         }
 
         & footer {
-            /* position: fixed;
             width: 100%;
             max-width: 1000px;
-            background-color: red; */
+            /* background-color: red; */
             bottom: 0;
             display: flex;
             justify-content: space-between;
             gap: 1em;
+            margin: 1em 0;
         }
 
         .gegevens {
@@ -537,16 +626,10 @@ input[type="text"], textarea {
             width: 100%;
             margin: auto;
             text-align: left;
-
-            & legend, i {
-                text-align: center;
-            }
-            
-
             
             & input {
                 
-                width: 100%;
+                width: 50%;
                 &[type="file"] {
                     display: none;
                     
@@ -647,7 +730,7 @@ input[type="text"], textarea {
                 display: grid;
                 grid-template-columns: 3fr 1fr;
                 grid-template-areas: 
-                "bread bread"
+                "bread annuleer"
                 "header annuleer";
 
                 align-items: center;

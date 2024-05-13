@@ -1,6 +1,7 @@
 <header>
     <section>
         <ul>
+            <li>Jij bent hier:</li>
             <li><a href="/dashboard/<%= companies.id %>">Dashboard</a></li>
             <li>Klant toevoegen</li>
         </ul>
@@ -57,17 +58,40 @@
             
         </label> -->
         <ol class="steps">
-            <li <% if (current == 'gegevens') { %> class="active" <% } %><% if (current == 'sdgs') { %> class="done<% if (current == 'scores') { %> class="done" <% } %>" <% } %>>
-                <div>1 </div>
-                <p>Klant toevoegen</p>
+            <li <% if (current == 'gegevens') { %> class="active"<% } %> <% if (current == 'sdgs') { %> class="done"<% } %> <% if (current == 'scores') { %> class="done" <% } %>>
+                <div>
+                    <% if (current == 'gegevens') { %>
+                        <div>1 </div>
+                    <% } else { %>
+                        <div>✓</div>
+                    <% } %>
+                    <p>Klant toevoegen</p>
+                </div>
             </li>
+   
             <li <% if (current == 'sdgs') { %> class="active" <% } %><% if (current == 'scores') { %> class="done" <% } %>>
-                <div>2 </div>
-                <p>SDG's kiezen</p>
+                <div>
+                    <% if (current == 'gegevens') { %>
+                        <div>2 </div>
+                    <% } %>
+                    <% if (current == 'sdgs') { %>
+                        <div>2 </div>
+                    <% } %>
+                    <% if (current == 'scores') { %>
+                        <div>✓</div>
+                    <% } %>
+                    <p>SDG's kiezen</p>
+                </div>
+                
+                
             </li>
+  
             <li <% if (current == 'scores') { %> class="active" <% } %>>
-                <div>3 </div>
-                <p>Scores toevoegen</p>
+                <div>
+                    <div> 3 </div>
+                    <p>Scores toevoegen</p>
+                </div>
+                
             </li>
         </ol>
     </section>
